@@ -47,8 +47,3 @@ for r in regions:
 
 cv2.imshow("Plate",license_plate)
 cv2.waitKey(0)
-
-# counter=0
-# for c in characters:
-#     if counter == 3: cv2.imwrite(f"../DataSource/Letters/Letter1/img20.jpg",c)
-#     counter+=1
