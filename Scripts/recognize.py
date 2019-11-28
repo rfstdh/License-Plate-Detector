@@ -7,8 +7,8 @@ import keras
 from skimage.color import gray2rgb
 
 
-for i in range(len(characters)): #28,28
-    characters[i] = gray2rgb(characters[i]) #28,28,1 => 28,28,3 #bgr!!!
+for i in range(len(characters)):
+    characters[i] = gray2rgb(characters[i]) #28,28,1 => 28,28,3 
     characters[i] = np.array(characters[i])
     print(characters[i].shape)
     # cv2.imshow("c",characters[i])
@@ -18,16 +18,9 @@ for i in range(len(characters)): #28,28
 model = keras.models.load_model('../Models/best_model.hdf5')
 
 characters = np.array(characters) 
-print(characters.shape)
 characters = np.reshape(characters,(7,28,28,3))
 print(characters.shape)
-img1 = cv2.imread("../DataSource/Letters/Letter0/img1.jpg")
-img2 = cv2.imread("../DataSource/Letters/Letter1/img1.jpg")
-img = []
-img.append(img1)
-img.append(img2)
-img = np.array(img)
-img = img / 255.0
+
 
 #dictionary
 d = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']

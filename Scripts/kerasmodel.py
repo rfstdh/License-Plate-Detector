@@ -1,4 +1,5 @@
 import keras
+import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten, BatchNormalization, Activation, Conv2D, MaxPooling2D, GlobalMaxPooling2D
 from keras.layers.advanced_activations import LeakyReLU
@@ -7,24 +8,17 @@ from keras.callbacks import ModelCheckpoint, ReduceLROnPlateau
 from sklearn.model_selection import train_test_split
 from skimage.color import rgb2gray
 
-import numpy as np
-
 from makeImageset import prepareSet
-from fontImages import prepareFontSet
-from resizeFont import resizeFontSet
 
 #preprocess data
 IMAGES1, LABELS1 = prepareSet('../DataSource/Data/Img/GoodImg/Bmp/Sample00','GoodImg','/img00')
 IMAGES2, LABELS2 = prepareSet('../DataSource/Data/Img/BadImag/Bmp/Sample00','BadImag','/img00')
-# IMAGESF, LABELSF = prepareFontSet('../DataSource/English/Fnt/Sample00','/img00')
-# resizeFontSet('../DataSource/English/Fnt/Sample00','/img00',(28,28))
 
 IMAGES = np.concatenate((IMAGES1,IMAGES2))
 LABELS = np.concatenate((LABELS1,LABELS2))
 
 #split the data into training and validation sets
 X_train, X_test, Y_train, Y_test = train_test_split(IMAGES,LABELS,test_size=0.15)
-
 
 # Convert labels to categorical encoding i.e 6 will be [0,0,0,0,0,1,0,0....0]
 train_cat = keras.utils.to_categorical(Y_train, num_classes=36)
