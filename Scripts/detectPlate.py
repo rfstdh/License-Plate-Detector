@@ -2,7 +2,7 @@ import cv2
 from skimage.measure import label,regionprops
 
 #load image
-img = cv2.imread("../img/rej6.jpg",0) # load as gray
+img = cv2.imread("../img/rej4.jpg",0) # load as gray
 cv2.imshow("Gray image",img)
 cv2.waitKey(0)
 
