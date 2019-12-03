@@ -18,7 +18,7 @@ for i in range(len(characters)):
 model = keras.models.load_model('../Models/best_model.hdf5')
 
 characters = np.array(characters) 
-characters = np.reshape(characters,(7,28,28,3))
+characters = np.reshape(characters,(len(characters),28,28,3))
 print(characters.shape)
 
 
